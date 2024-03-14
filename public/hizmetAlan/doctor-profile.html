@@ -1,0 +1,634 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Doccure</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		
+		<!-- Favicons -->
+		<link href="assets/img/favicon.png" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="assets/css/feather.css">
+		
+		<!-- Fancybox CSS -->
+		<link rel="stylesheet" href="assets/plugins/fancybox/jquery.fancybox.min.css">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			
+			
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-12 col-12">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Doctor Profile</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">Doctor Profile</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container">
+
+					<!-- Doctor Widget -->
+					<div class="card">
+						<div class="card-body">
+							<div class="doctor-widget">
+								<div class="doc-info-left">
+									<div class="doctor-img">
+										<img src="assets/img/doctors/doctor-img.png" class="img-fluid" alt="User Image">
+									</div>
+									<div class="doc-info-cont">
+										<h4 class="doc-name">Dr. Darren Elder</h4>
+										<p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
+										<p class="doc-department"><img src="assets/img/specialities/specialities-05.png" class="img-fluid" alt="Speciality">Dentist</p>
+										<div class="rating">
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star"></i>
+											<span class="d-inline-block average-rating">(35)</span>
+										</div>
+										<div class="clinic-details">
+											<p class="doc-location"><i class="fas fa-map-marker-alt"></i> İstanbul / Arnavutköy</p>
+											<ul class="clinic-gallery">
+												<li>
+													<a href="assets/img/features/feature-1.jpg" data-fancybox="gallery">
+														<img src="assets/img/features/feature-1.jpg" alt="Feature">
+													</a>
+												</li>
+												<li>
+													<a href="assets/img/features/feature-2.jpg" data-fancybox="gallery">
+														<img  src="assets/img/features/feature-2.jpg" alt="Feature Image">
+													</a>
+												</li>
+												<li>
+													<a href="assets/img/features/feature-3.png" data-fancybox="gallery">
+														<img src="assets/img/features/feature-3.png" alt="Feature">
+													</a>
+												</li>
+												<li>
+													<a href="assets/img/features/feature-4.png" data-fancybox="gallery">
+														<img src="assets/img/features/feature-4.png" alt="Feature">
+													</a>
+												</li>
+											</ul>
+										</div>
+		
+									</div>
+								</div>
+								<div class="doc-info-right">
+									<div class="clini-infos">
+										<ul>
+											<li><i class="far fa-thumbs-up"></i> 99%</li>
+											<li><i class="far fa-comment"></i> 35 Feedback</li>
+											<li><i class="fas fa-map-marker-alt"></i> İstanbul</li>
+											<li><i class="far fa-money-bill-alt"></i> $100 per hour </li>
+										</ul>
+									</div>
+									<div class="doctor-action">
+										<a href="javascript:void(0)" class="btn btn-white fav-btn">
+											<i class="far fa-bookmark"></i>
+										</a>
+										<a href="chat.html" class="btn btn-white msg-btn">
+											<i class="far fa-comment-alt"></i>
+										</a>
+										<a href="javascript:void(0)" class="btn btn-white call-btn" data-bs-toggle="modal" data-bs-target="#voice_call">
+											<i class="fas fa-phone"></i>
+										</a>
+										<a href="javascript:void(0)" class="btn btn-white call-btn" data-bs-toggle="modal" data-bs-target="#video_call">
+											<i class="fas fa-video"></i>
+										</a>
+									</div>
+									<div class="clinic-booking">
+										<a class="apt-btn" href="booking.html">Randevu Al</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Doctor Widget -->
+					
+					<!-- Doctor Details Tab -->
+					<div class="card">
+						<div class="card-body pt-0">
+						
+							<!-- Tab Menu -->
+							<nav class="user-tabs mb-4">
+								<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+									<li class="nav-item">
+										<a class="nav-link active" href="#doc_overview" data-bs-toggle="tab">Genel Bilgiler</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#doc_locations" data-bs-toggle="tab">Konum</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#doc_reviews" data-bs-toggle="tab">Yorumlar</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#doc_business_hours" data-bs-toggle="tab">Çalışma Saatleri</a>
+									</li>
+								</ul>
+							</nav>
+							<!-- /Tab Menu -->
+							
+							<!-- Tab Content -->
+							<div class="tab-content pt-0">
+							
+								<!-- Overview Content -->
+								<div role="tabpanel" id="doc_overview" class="tab-pane fade show active">
+									<div class="row">
+										<div class="col-md-12 col-lg-9">
+										
+											<!-- About Details -->
+											<div class="widget about-widget">
+												<h4 class="widget-title">Hakkımda</h4>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+											</div>
+											<!-- /About Details -->
+										
+											<!-- Education Details -->
+											<div class="widget education-widget">
+												<h4 class="widget-title">Eğitim</h4>
+												<div class="experience-box">
+													<ul class="experience-list">
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<a href="#/" class="name">American Dental Medical University</a>
+																	<div>BDS</div>
+																	<span class="time">1998 - 2003</span>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<a href="#/" class="name">American Dental Medical University</a>
+																	<div>MDS</div>
+																	<span class="time">2003 - 2005</span>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<!-- /Education Details -->
+									
+											<!-- Experience Details -->
+											<div class="widget experience-widget">
+												<h4 class="widget-title">Deneyimler</h4>
+												<div class="experience-box">
+													<ul class="experience-list">
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<a href="#/" class="name">Glowing Smiles Family Dental Clinic</a>
+																	<span class="time">2010 - Present (5 years)</span>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<a href="#/" class="name">Comfort Care Dental Clinic</a>
+																	<span class="time">2007 - 2010 (3 years)</span>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<a href="#/" class="name">Dream Smile Dental Practice</a>
+																	<span class="time">2005 - 2007 (2 years)</span>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<!-- /Experience Details -->
+								
+											<!-- Awards Details -->
+											<div class="widget awards-widget mb-3">
+												<h4 class="widget-title">Ödüller</h4>
+												<div class="experience-box">
+													<ul class="experience-list">
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<p class="exp-year">July 2019</p>
+																	<h4 class="exp-title">Humanitarian Award</h4>
+																	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<p class="exp-year">March 2011</p>
+																	<h4 class="exp-title">Certificate for International Volunteer Service</h4>
+																	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<p class="exp-year">May 2008</p>
+																	<h4 class="exp-title">The Dental Professional of The Year Award</h4>
+																	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<!-- /Awards Details -->
+											
+											<!-- Services List -->
+											<div class="service-list mt-4">
+												<h4>Uzmanlıklar</h4>
+												<ul class="clearfix">
+													<li>Çocuk Bakımı </li>
+													<li>Diş Bakımı</li>
+													<li>Ağız ve Çene Cerrahisi</li>
+													<li>Ortodontist</li>
+													<li>Periodontist</li>
+													<li>Protez Diş Tedavisi</li>
+												</ul>
+											</div>
+											<!-- /Services List -->
+											
+
+										</div>
+									</div>
+								</div>
+								<!-- /Overview Content -->
+								
+								<!-- Locations Content -->
+								<div role="tabpanel" id="doc_locations" class="tab-pane fade">
+								
+									<!-- Location List -->
+									<div class="location-list">
+										<div class="row">
+										
+											<!-- Clinic Content -->
+											<div class="col-md-6">
+												<div class="clinic-content">
+													<h4 class="clinic-name"><a href="#">Smile Cute Dental Care Center</a></h4>
+													<p class="doc-speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+													<div class="rating">
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star"></i>
+														<span class="d-inline-block average-rating">(4)</span>
+													</div>
+													<div class="clinic-details mb-0">
+														<h5 class="clinic-direction"> <i class="fas fa-map-marker-alt"></i> 2286  Sundown Lane, Austin, Texas 78749, USA <br><a href="javascript:void(0);">Get Directions</a></h5>
+														<ul>
+															<li>
+																<a href="assets/img/features/feature-1.jpg" data-fancybox="gallery2">
+																	<img src="assets/img/features/feature-1.jpg" alt="Feature Image">
+																</a>
+															</li>
+															<li>
+																<a href="assets/img/features/feature-2.jpg" data-fancybox="gallery2">
+																	<img src="assets/img/features/feature-2.jpg" alt="Feature Image">
+																</a>
+															</li>
+															<li>
+																<a href="assets/img/features/feature-3.png" data-fancybox="gallery2">
+																	<img src="assets/img/features/feature-3.png" alt="Feature Image">
+																</a>
+															</li>
+															<li>
+																<a href="assets/img/features/feature-4.png" data-fancybox="gallery2">
+																	<img src="assets/img/features/feature-4.png" alt="Feature Image">
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<!-- /Clinic Content -->
+											
+											<!-- Clinic Timing -->
+											<div class="col-md-4">
+												<div class="clinic-timing">
+													<div>
+														<p class="timings-days">
+															<span> Mon - Sat </span>
+														</p>
+														<p class="timings-times">
+															<span>10:00 AM - 2:00 PM</span>
+															<span>4:00 PM - 9:00 PM</span>
+														</p>
+													</div>
+													<div>
+													<p class="timings-days">
+														<span>Sun</span>
+													</p>
+													<p class="timings-times">
+														<span>10:00 AM - 2:00 PM</span>
+													</p>
+													</div>
+												</div>
+											</div>
+											<!-- /Clinic Timing -->
+											
+											<div class="col-md-2">
+												<div class="consult-price">
+													$250
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /Location List -->
+									
+
+								</div>
+								<!-- /Locations Content -->
+								
+								<!-- Reviews Content -->
+								<div role="tabpanel" id="doc_reviews" class="tab-pane fade">
+								
+									<!-- Review Listing -->
+									<div class="widget review-listing">
+										<ul class="comments-list">
+										
+											<!-- Comment List -->
+											<li>
+												<div class="comment">
+													<img class="avatar avatar-sm rounded-circle" alt="User Image" src="assets/img/patients/patient.jpg">
+													<div class="comment-body">
+														<div class="meta-data">
+															<span class="comment-author">Richard Wilson</span>
+															<span class="comment-date">Reviewed 2 Days ago</span>
+															<div class="review-count rating">
+																<i class="fas fa-star filled"></i>
+																<i class="fas fa-star filled"></i>
+																<i class="fas fa-star filled"></i>
+																<i class="fas fa-star filled"></i>
+																<i class="fas fa-star"></i>
+															</div>
+														</div>
+														<p class="comment-content">
+															Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+															sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+															Ut enim ad minim veniam, quis nostrud exercitation.
+															Curabitur non nulla sit amet nisl tempus
+														</p>
+														
+													</div>
+												</div>
+												
+												
+											</li>
+											<!-- /Comment List -->
+											
+											<!-- Comment List -->
+											<li>
+												<div class="comment">
+													<img class="avatar avatar-sm rounded-circle" alt="User Image" src="assets/img/patients/patient2.jpg">
+													<div class="comment-body">
+														<div class="meta-data">
+															<span class="comment-author">Travis Trimble</span>
+															<span class="comment-date">Reviewed 4 Days ago</span>
+															<div class="review-count rating">
+																<i class="fas fa-star filled"></i>
+																<i class="fas fa-star filled"></i>
+																<i class="fas fa-star filled"></i>
+																<i class="fas fa-star filled"></i>
+																<i class="fas fa-star"></i>
+															</div>
+														</div>
+														<p class="comment-content">
+															Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+															sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+															Ut enim ad minim veniam, quis nostrud exercitation.
+															Curabitur non nulla sit amet nisl tempus
+														</p>
+														
+													</div>
+												</div>
+											</li>
+											<!-- /Comment List -->
+											
+										</ul>
+										
+									</div>
+									<!-- /Review Listing -->
+								
+								</div>
+								<!-- /Reviews Content -->
+								
+								<!-- Business Hours Content -->
+								<div role="tabpanel" id="doc_business_hours" class="tab-pane fade">
+									<div class="row">
+										<div class="col-md-6 offset-md-3">
+										
+											<!-- Business Hours Widget -->
+											<div style="margin:20px;" class="widget business-widget">
+												<div class="widget-content">
+													<div class="listing-hours">
+														<div class="listing-day current">
+															<div class="day">Today <span>5 Nov 2019</span></div>
+															<div class="time-items">
+																<span class="open-status"><span style="padding: 10px;" class="badge bg-success-light">Open Now</span></span>
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Monday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Tuesday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Wednesday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Thursday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Friday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Saturday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day closed">
+															<div class="day">Sunday</div>
+															<div class="time-items">
+																<span class="time"><span style="padding: 10px;" class="badge bg-danger-light">Closed</span></span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /Business Hours Widget -->
+									
+										</div>
+									</div>
+								</div>
+								<!-- /Business Hours Content -->
+								
+							</div>
+						</div>
+					</div>
+					<!-- /Doctor Details Tab -->
+
+				</div>
+			</div>		
+			<!-- /Page Content -->
+   
+		
+		   
+		</div>
+		<!-- /Main Wrapper -->
+		
+		<!-- Voice Call Modal -->
+		<div class="modal fade call-modal" id="voice_call">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<!-- Outgoing Call -->
+						<div class="call-box incoming-box">
+							<div class="call-wrapper">
+								<div class="call-inner">
+									<div class="call-user">
+										<img alt="User Image" src="assets/img/doctors/doctor-thumb-02.jpg" class="call-avatar">
+										<h4>Dr. Darren Elder</h4>
+										<span>Connecting...</span>
+									</div>							
+									<div class="call-items">
+										<a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal" aria-label="Close"><i class="material-icons">call_end</i></a>
+										<a href="voice-call.html" class="btn call-item call-start"><i class="material-icons">call</i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Outgoing Call -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Voice Call Modal -->
+		
+		<!-- Video Call Modal -->
+		<div class="modal fade call-modal" id="video_call">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+					
+						<!-- Incoming Call -->
+						<div class="call-box incoming-box">
+							<div class="call-wrapper">
+								<div class="call-inner">
+									<div class="call-user">
+										<img class="call-avatar" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+										<h4>Dr. Darren Elder</h4>
+										<span>Calling ...</span>
+									</div>							
+									<div class="call-items">
+										<a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal" aria-label="Close"><i class="material-icons">call_end</i></a>
+										<a href="video-call.html" class="btn call-item call-start"><i class="material-icons">videocam</i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Incoming Call -->
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Video Call Modal -->
+		
+		<!-- jQuery -->
+		<script src="assets/js/jquery-3.6.0.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/bootstrap.bundle.min.js"></script>
+		
+		<!-- Fancybox JS -->
+		<script src="assets/plugins/fancybox/jquery.fancybox.min.js"></script>
+
+		<!-- Feather Icon JS -->
+		<script src="assets/js/feather.min.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+		
+	</body>
+</html>

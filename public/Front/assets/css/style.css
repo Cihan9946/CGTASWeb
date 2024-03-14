@@ -1,0 +1,83 @@
+.aktif{
+    border-bottom: 2px solid black;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+.mainsilder{
+    height: 600px;
+}
+
+.carousel_img{
+
+    min-height: 600px; /* Resmin maksimum yüksekliği %100 olarak ayarlandı */
+    width: auto; /* Genişlik otomatik olarak ayarlanacak */
+}
+
+.sliderhead{
+    margin-left: 200px;
+    margin-top: 100px;
+}
+.slidertext{
+    margin-left: 200px;
+    margin-top:100px;
+}
+.sliderbuton{
+    margin-left: 200px;
+    margin-top:100px;
+}
+.yazi{
+    font-size: smaller;
+}
+.img-xbox{
+    width: 90px;
+}
+.cardlink{
+    text-decoration: none;
+
+}
+.section1 a {
+    text-decoration: none;
+}
+.carousel-item {
+    line-height: 2.5rem;
+}
+.sabitback{
+    background-color: #d9d9d9;
+    padding: 100px;
+}
+
+.basadonback{
+    background-color: #d9d9d9;
+    border-style: none;
+}
+.basadonback{
+    text-decoration: none;
+    height:60px;
+    width:200px;
+}
+.basadonback1{
+    text-decoration: none
+}
+.upimg{
+    width: 50px;
+}
+
+.footerback{
+    background-color: #f2f2f2;
+    color: #616161;
+    font-family:'Roboto', sans-serif ;
+}
+.eartimage{
+    height: 40px;
+}
+.headtext{
+    color: black;
+}
+.cardborder{
+    border-style: none;
+}
