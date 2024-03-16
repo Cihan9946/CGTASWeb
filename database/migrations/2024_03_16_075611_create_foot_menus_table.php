@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('footer_menus', function (Blueprint $table) {
+        Schema::create('foot_menus', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('top_menu_id')->nullable();
             $table->string('name');
@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
 
-            $table->foreign('top_menu_id')->references('id')->on('menus');
+            $table->foreign('top_menu_id')->references('id')->on('foot_menus');
+
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('footer_menus');
+        Schema::dropIfExists('foot_menus');
     }
 };

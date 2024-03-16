@@ -51,7 +51,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ $menu->id }}">
                                     @foreach($menu->getSubmenus as $submenu)
-                                        <a href="@if($submenu->getPage) {{ route('page', $submenu->getPage->id) }} @endif" class="dropdown-item">{{ $submenu->name }}</a>
+                                        <a href="@if($submenu->getPage) {{ route('pages', $submenu->getPage->id) }} @endif" class="dropdown-item">{{ $submenu->name }}</a>
                                     @endforeach
                                 </div>
                             </div>

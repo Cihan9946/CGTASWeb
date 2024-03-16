@@ -9,7 +9,7 @@ class FooterMenu extends Model
 {
     use HasFactory;
 
-    protected $table = "footer_menus";
+    protected $table = "foot_menus";
 
     protected $guarded = [
         'id'

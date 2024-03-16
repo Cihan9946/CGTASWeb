@@ -34,13 +34,11 @@ Route::group(['prefix' => '/admin', 'middleware' => 'Admin'], function () {
     })->name('admin.dashboard');
 
     //Menu-SubMenu Route
-
     Route::get('/menuCreate', [AdminController::class, 'menuIndex'])->name('menuIndex');
     Route::post('/menuCreate', [AdminController::class, 'create_menu'])->name('menuCreate');
     Route::post('/pageSubMenuCreate', [AdminController::class, 'pageSubMenuCreate'])->name('pageSubMenuCreate');
     Route::post('/pageMenuCreate', [AdminController::class, 'pageMenuCreate'])->name('pageMenuCreate');
     Route::get('/fetchMenu', [AdminController::class, 'fetchMenu'])->name('fetchMenu');
-    Route::get('/page', [AdminController::class, 'page'])->name('page');
     Route::get('/getMenu', [AdminController::class, 'getMenu'])->name('getMenu');
     Route::post('/updateMenu', [AdminController::class, 'updateMenu'])->name('updateMenu');
     Route::get('/fetchSubMenu/{id}', [AdminController::class, 'fetchSubMenu'])->name('fetchSubMenu');
@@ -164,8 +162,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'Admin'], function () {
 
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [FrontController::class, 'appIndex'])->name('appIndex');
-   //menü sayfası getirmek için yazılan route
-    Route::get('/page/{page_id}', [FrontController::class, 'page'])->name('page');
+    //menü sayfası getirmek için yazılan route
     //Slider sayfası getirmek için yazılan route
     Route::get('/get-page-by-Slider', [FrontController::class, 'getPageBySlider'])->name('getPageBySlider');
     //Card1 sayfası getirmek için yazılan route
@@ -179,5 +176,8 @@ Route::group(['prefix' => '/'], function () {
     //PageCard sayfası getirmek için yazılan route
     Route::get('/get-page-by-PageCard', [FrontController::class, 'getPageByPageCard'])->name('getPageByPageCard');
     //Footer sayfası getirmek için yazılan route
-    Route::get('/page/{page_id}', [FrontController::class, 'pagefooter'])->name('pagefooter');
+    Route::get('/page/{page_id}', [FrontController::class, 'pages'])->name('pages');
+    Route::get('/pagefooter/{page_id}', [FrontController::class, 'pagefooter'])->name('pagefooter');
 });
+
+

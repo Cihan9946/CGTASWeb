@@ -182,6 +182,7 @@
                 cancelButtonColor: "#e30d0d"
             }).then((result)=>{
                 if (result.isConfirmed){
+
                     let url = '{{route('FootermenuCreate')}}';
                     let formData = new FormData(document.getElementById('menu_create'));
                     $.ajax({

@@ -44,16 +44,18 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ $menu->id }}">
                                     @foreach($menu->getSubmenus as $submenu)
-                                        <a href="@if($submenu->getPage) {{ route('page', $submenu->getPage->id) }} @endif" class="dropdown-item">{{ $submenu->name }}</a>
+                                        <a href="@if($submenu->getPage) {{ route('pages', $submenu->getPage->id) }} @endif" class="dropdown-item">{{ $submenu->name }}</a>
                                     @endforeach
                                 </div>
                             </div>
                         @else
-                            <a href="@if($menu->getPage) {{ route('page', $menu->getPage->id) }} @endif" class="nav-item nav-link mx-2">{{ $menu->name }}</a>
+                            <a href="@if($menu->getPage) {{ route('pages', $menu->getPage->id) }} @endif" class="nav-item nav-link mx-2">{{ $menu->name }}</a>
                         @endif
                     @endforeach
                 </div>
             </div>
+
+
 
 
             <div class="mx-5 yazi">Ara</div>
@@ -299,61 +301,25 @@
 <footer class="mt-3">
 
     <section class="section footerback p-5 ">
-        <div class="row mt-5">
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">Yenilikler</h4>
-                <h6 class="mb-4">Microsoft 365</h6>
-                <h6>Windows 11 uygulamaları</h6>
-            </div>
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">Microsoft Store</h4>
-                <h6 class="mb-4">Hesap Profili</h6>
-                <h6 class="mb-4">İndirme Merkezi</h6>
-                <h6 class="mb-4">Microsoft Store Desteği</h6>
-                <h6 class="mb-4">İadeler</h6>
-                <h6 class="mb-4">Sipariş İzleme</h6>
-            </div>
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">Eğitim</h4>
-                <h6 class="mb-4">Microsoft Eğitimi</h6>
-                <h6 class="mb-4">Eğitim için Microsoft Teams</h6>
-                <h6 class="mb-4">Microsoft 365 Eğitim</h6>
-                <h6 class="mb-4">Office Eğitim</h6>
-                <h6 class="mb-4">Eğitimci eğitimi ve gelişimi</h6>
-                <h6 class="mb-4">Öğrenciler için Azure</h6>
-            </div>
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">İşletme</h4>
-                <h6 class="mb-4">Microsoft Cloud</h6>
-                <h6 class="mb-4">Microsoft Güvenlik</h6>
-                <h6 class="mb-4">Azure</h6>
-                <h6 class="mb-4">Dynamics 365</h6>
-                <h6 class="mb-4">Microsoft 365</h6>
-                <h6 class="mb-4">Microsoft Adversiting </h6>
-                <h6 class="mb-4">Microsoft Industry</h6>
-                <h6 class="mb-4">Microsoft Teams</h6>
-            </div>
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">Geliştirici ve BT</h4>
-                <h6 class="mb-4">Geliştirici Merkezi</h6>
-                <h6 class="mb-4">Belgeler</h6>
-                <h6 class="mb-4">Microsoft Learn</h6>
-                <h6 class="mb-4">Microsoft Tech Community</h6>
-                <h6 class="mb-4">Azure Market</h6>
-                <h6 class="mb-4">AppSource</h6>
-                <h6 class="mb-4">Microsoft Power Platform</h6>
-            </div>
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">Şirket</h4>
-                <h6 class="mb-4">Kariyer Fırsatları</h6>
-                <h6 class="mb-4">Microsoft Hakkında</h6>
-                <h6 class="mb-4">Microsoft’ta Gizlilik</h6>
-                <h6 class="mb-4">Microsoft 365 Eğitim</h6>
-                <h6 class="mb-4">Yatırımcılar</h6>
-                <h6 class="mb-4">Sürdürülebilirlik</h6>
-            </div>
+        <div class="row mt-2">
+            @if ($footerMenus->where('top_menu_id', null)->count() > 0)
+                @foreach ($footerMenus->where('top_menu_id', null) as $footerMenu)
+                    <div  class="col-md-2">
+                        <h4 class="mb-5 headtext">{{ $footerMenu->name }}</h4>
+                        @if ($footerMenu->getSubmenus->count() > 0)
+                            <ul style="padding-left: 0;" class="submenu-list">
+                                @foreach ($footerMenu->getSubmenus as $submenu)
+                                    <li style="list-style-type: none;" ><a style="text-decoration:none ; color: #1c1f23" href="@if($submenu->getPage) {{ route('pagefooter', $submenu->getPage->id) }} @endif">{{ $submenu->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+                @endforeach
+            @endif
         </div>
     </section>
+
+
 
     <section class="section footerback p-5 ">
         <div class="row mt-5">

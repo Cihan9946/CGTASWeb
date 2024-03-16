@@ -28,11 +28,12 @@ class FrontController extends Controller
         $SabitIcon=SabitIcon::get();
         $menus = Menu::where('top_menu_id', $request->top_menu_id)->get();
         $PageCard=PageCard::get();
-        return view('Index', compact('menus','images','card1','card2','SabitSide','SabitIcon','PageCard'));
+        $footerMenus=FooterMenu::where('top_menu_id', $request->top_menu_id)->get();
+        return view('Index', compact('menus','footerMenus','images','card1','card2','SabitSide','SabitIcon','PageCard'));
     }
 
     //Menü ve alt menü sayfası getirmek için
-    function page($page_id,Request $request){
+    function pages($page_id,Request $request){
         $menus = Menu::where('top_menu_id', $request->top_menu_id)->get();
         $page = Page::where('id', $page_id)->first();
 

@@ -1348,7 +1348,6 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'top_menu_id' => 'nullable|exists:menus,id'
         ]);
-
         if ($request->top_menu_id){
             $top_menu = FooterMenu::where('id', $request->top_menu_id)->where('user_id', Auth::id())->first();
 
@@ -1365,6 +1364,5 @@ class AdminController extends Controller
 
         return response() -> json(['data' => $menu]);
     }
-
 
 }
