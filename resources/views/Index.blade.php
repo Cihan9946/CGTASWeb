@@ -15,7 +15,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{asset('Front/assets/css/style.css')}}">
-
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -57,11 +58,33 @@
 
 
 
+        </div>
+        <div class="panel-body mt-5 mx-5">
+            <div class="form-group">
+                <input placeholder="Ara" type="text" class="form-controller" id="search" name="search"></input>
+            </div>
+            <table class="table table-bordered table-hover">
 
-            <div class="mx-5 yazi">Ara</div>
-            <div style="margin-left: -40px;"></div>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
 
-            <a class="mx-5" href="#"><img src="{{asset('Front/images/Search.png')}}" alt=""></a>
+        <div class="panel-body input-group">
+            <div class="form-group" >
+                <input placeholder="Ara" type="text" class="form-controller" id="search" name="search"</input>
+
+
+            </div>
+            <table class="table table-bordered table-hover">
+
+                <tbody>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
 
             <ul class="navbar-nav mr-5  ">
 
@@ -358,6 +381,29 @@
 <script src="{{asset("Front/assets/scripts/swiper-bundle.min.js")}}"></script>
 <!-- HTML içerisinde Slider'ı başlatan JavaScript kodu -->
 
+<script type="text/javascript">
+    $('#search').on('keyup',function(){
+        $value=$(this).val();
+        $.ajax({
+            type : 'get',
+            url : '{{route('search')}}',
+            data:{'search':$value},
+            success:function(data){
+                $('tbody').html(data);
+            }
+        });
+    })
+</script>
+<script type="text/javascript">
+    $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+</script>
+<script>
+    // Initialization for ES Users
+    import { Input, Ripple, initMDB } from "mdb-ui-kit";
+
+    initMDB({ Input, Ripple });
+</script>
 <!-- Template Main JS File -->
 </body>
 </html>
+
