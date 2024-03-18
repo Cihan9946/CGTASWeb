@@ -178,6 +178,9 @@ Route::group(['prefix' => '/'], function () {
     //Footer sayfası getirmek için yazılan route
     Route::get('/page/{page_id}', [FrontController::class, 'pages'])->name('pages');
     Route::get('/pagefooter/{page_id}', [FrontController::class, 'pagefooter'])->name('pagefooter');
+    //SEARCH BAR
+    Route::get('/search', [FrontController::class,'search'])->name('search');
+
 });
 
 
