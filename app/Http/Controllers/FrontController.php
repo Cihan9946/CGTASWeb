@@ -101,4 +101,25 @@ class FrontController extends Controller
 
         return view('page', compact('page','menus'));
     }
+
+    //Search bar
+        public function search(Request $request)
+    {
+        if($request->ajax())
+        {
+            $output="";
+            $products=DB::table('menus')->where('name','LIKE','%'.$request->search."%")->get();
+            if($products)
+            {
+                foreach ($products as $key => $product) {
+                    $output.='<tr>'.
+                        '<td>'.$product->name.'</td>'.
+
+                        '</tr>';
+                }
+                return Response($output);
+            }
+        }
+    }
+
 }
