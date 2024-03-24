@@ -81,3 +81,13 @@ body {
 .cardborder{
     border-style: none;
 }
+.panel-body {
+    position: relative;
+}
+
+.table {
+    position: absolute;
+    top: 100%; /* veya istediğiniz bir değer */
+    left: 0;
+    z-index: 999;
+}

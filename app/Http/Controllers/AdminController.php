@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Card1;
 use App\Models\Card2;
+use App\Models\Country;
 use App\Models\FooterMenu;
 use App\Models\FooterPage;
 use App\Models\FooterSubMenu;
@@ -29,7 +30,33 @@ class AdminController extends Controller
 
     function menuIndex(){
         $menu = Menu::where('user_id', Auth::id())->get();
-        return view('admin.menu.menuCreate',compact('menu'));
+        $countries = Country::all();
+        return view('admin.menu.menuCreate',compact('menu','countries'));
+    }
+    public function create_menu(Request $request){
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'top_menu_id' => 'nullable|exists:menus,id',
+            'language_code' => 'required|exists:countries,code' // Dil kodu doğrulaması
+        ]);
+
+        if ($request->top_menu_id){
+            $top_menu = Menu::where('id', $request->top_menu_id)->where('user_id', Auth::id())->first();
+
+            if (!$top_menu){
+                abort(401);
+            }
+        }
+
+        $menu = Menu::create([
+            'top_menu_id' => $request->top_menu_id,
+            'name' => $request->name,
+            'lang' => $request->language_code, // Dil kodunu kaydet
+            'user_id' => Auth::id()
+        ]);
+
+        return response() -> json(['data' => $menu]);
     }
 
     function menuDetail($id){
@@ -50,19 +77,7 @@ class AdminController extends Controller
         return view('admin.menu.submenuDetail', compact('submenu'));
     }
 
-    function menuCreate(Request $request){
-        $request -> validate([
-            'name' => 'required',
-        ]);
 
-        $menu = new Menu();
-        $menu -> name = $request -> name;
-        $menu -> user_id = Auth::id();
-
-        $menu -> save();
-
-        return response() -> json(['succes' => true]);
-    }
 
     function subMenuCreate(Request $request){
 
@@ -382,7 +397,8 @@ class AdminController extends Controller
 //Slider Add-Delete
     function sliderIndex(){
         $slider = Slider::where('user_id', Auth::id())->get();
-        return view('admin.slider.slider', compact('slider'));
+        $countries = Country::all();
+        return view('admin.slider.slider', compact('slider','countries'));
     }
 
     function createSlider(Request $request){
@@ -393,6 +409,7 @@ class AdminController extends Controller
             'link' => 'required|string',
             'title' => 'required|string',
             'description' => 'required|string',
+            'language_code' => 'required|exists:countries,code' // Dil kodu doğrulaması
         ]);
 
         $slider = new Slider();
@@ -401,7 +418,7 @@ class AdminController extends Controller
         $slider->link = $request->link;
         $slider->title = $request->title;
         $slider->description = $request->description;
-
+        $slider->lang = $request->language_code;
         if ($file = $request->file('img')){
             $name = $file->getClientOriginalName();
             $file->move('slider/', $name);
@@ -440,6 +457,9 @@ class AdminController extends Controller
             ->addColumn('description', function ($data){
                 return $data->link;
             })
+            ->addColumn('lang', function ($data){
+                return $data->lang;
+            })
             ->addColumn('detail', function ($data){
                 return '<button class="btn btn-danger" onclick="delete_slider('.$data->id.')">Sil</button>';
             })
@@ -467,7 +487,8 @@ class AdminController extends Controller
 //Card1 Add-Delete
     function Card1Index(){
         $card1 = Card1::where('user_id', Auth::id())->get();
-        return view('admin.card1.card1', compact('card1'));
+        $countries = Country::all();
+        return view('admin.card1.card1', compact('card1','countries'));
     }
 
     function createCard1(Request $request){
@@ -478,6 +499,7 @@ class AdminController extends Controller
             'link' => 'required|string',
             'title' => 'required|string',
             'description' => 'required|string',
+            'language_code' => 'required|exists:countries,code' // Dil kodu doğrulaması
         ]);
 
         $card1 = new Card1();
@@ -486,7 +508,7 @@ class AdminController extends Controller
         $card1->link = $request->link;
         $card1->title = $request->title;
         $card1->description = $request->description;
-
+        $card1->lang = $request->language_code;
         if ($file = $request->file('img')){
             $name = $file->getClientOriginalName();
             $file->move('card1/', $name);
@@ -525,6 +547,9 @@ class AdminController extends Controller
             ->addColumn('description', function ($data){
                 return $data->link;
             })
+            ->addColumn('lang', function ($data){
+                return $data->lang;
+            })
             ->addColumn('detail', function ($data){
                 return '<button class="btn btn-danger" onclick="delete_slider('.$data->id.')">Sil</button>';
             })
@@ -547,7 +572,8 @@ class AdminController extends Controller
 //Card2 Add-Delete
     function Card2Index(){
         $card2 = Card2::where('user_id', Auth::id())->get();
-        return view('admin.card2.card2', compact('card2'));
+        $countries = Country::all();
+        return view('admin.card2.card2', compact('card2','countries'));
     }
 
     function createCard2(Request $request){
@@ -558,6 +584,8 @@ class AdminController extends Controller
             'link' => 'required|string',
             'title' => 'required|string',
             'description' => 'required|string',
+            'language_code' => 'required|exists:countries,code' // Dil kodu doğrulaması
+
         ]);
 
         $card2 = new Card2();
@@ -566,6 +594,8 @@ class AdminController extends Controller
         $card2->link = $request->link;
         $card2->title = $request->title;
         $card2->description = $request->description;
+        $card2->lang = $request->language_code;
+
 
         if ($file = $request->file('img')){
             $name = $file->getClientOriginalName();
@@ -605,6 +635,9 @@ class AdminController extends Controller
             ->addColumn('description', function ($data){
                 return $data->link;
             })
+            ->addColumn('lang', function ($data){
+                return $data->lang;
+            })
             ->addColumn('detail', function ($data){
                 return '<button class="btn btn-danger" onclick="delete_slider('.$data->id.')">Sil</button>';
             })
@@ -627,7 +660,8 @@ class AdminController extends Controller
     //SabitSide Add-Delete
     function SabitSideIndex(){
         $SabitSide = SabitSide::where('user_id', Auth::id())->get();
-        return view('admin.SabitSide.SabitSide', compact('SabitSide'));
+        $countries = Country::all();
+        return view('admin.SabitSide.SabitSide', compact('SabitSide','countries'));
     }
 
     function createSabitSide(Request $request){
@@ -638,6 +672,7 @@ class AdminController extends Controller
             'link' => 'required|string',
             'title' => 'required|string',
             'description' => 'required|string',
+            'language_code' => 'required|exists:countries,code' // Dil kodu doğrulaması
         ]);
 
         $SabitSide = new SabitSide();
@@ -646,6 +681,8 @@ class AdminController extends Controller
         $SabitSide->link = $request->link;
         $SabitSide->title = $request->title;
         $SabitSide->description = $request->description;
+        $SabitSide->lang = $request->language_code;
+
 
         if ($file = $request->file('img')){
             $name = $file->getClientOriginalName();
@@ -685,6 +722,9 @@ class AdminController extends Controller
             ->addColumn('description', function ($data){
                 return $data->link;
             })
+            ->addColumn('lang', function ($data){
+                return $data->lang;
+            })
             ->addColumn('detail', function ($data){
                 return '<button class="btn btn-danger" onclick="delete_slider('.$data->id.')">Sil</button>';
             })
@@ -708,7 +748,9 @@ class AdminController extends Controller
     //SabitIcon Add-Delete
     function SabitIconIndex(){
         $SabitIcon = SabitIcon::where('user_id', Auth::id())->get();
-        return view('admin.SabitIcon.SabitIcon', compact('SabitIcon'));
+        $countries = Country::all();
+
+        return view('admin.SabitIcon.SabitIcon', compact('SabitIcon','countries'));
     }
 
     function createSabitIcon(Request $request){
@@ -717,12 +759,16 @@ class AdminController extends Controller
             'maintitle' => 'required|string',
             'title' => 'required|string',
             'description' => 'required|string',
+            'language_code' => 'required|exists:countries,code' // Dil kodu doğrulaması
+
         ]);
 
         $SabitIcon = new SabitIcon();
         $SabitIcon->maintitle = $request->maintitle;
         $SabitIcon->title = $request->title;
         $SabitIcon->description = $request->description;
+        $SabitIcon->lang = $request->language_code;
+
 
         if ($file = $request->file('img')){
             $name = $file->getClientOriginalName();
@@ -757,6 +803,9 @@ class AdminController extends Controller
             ->addColumn('description', function ($data){
                 return $data->link;
             })
+            ->addColumn('lang', function ($data){
+                return $data->lang;
+            })
             ->addColumn('detail', function ($data){
                 return '<button class="btn btn-danger" onclick="delete_slider('.$data->id.')">Sil</button>';
             })
@@ -780,7 +829,9 @@ class AdminController extends Controller
 //PageCard Add-Delete
     function PageCard(){
         $PageCard = PageCard::where('user_id', Auth::id())->get();
-        return view('admin.PageCard.PageCard', compact('PageCard'));
+        $countries = Country::all();
+
+        return view('admin.PageCard.PageCard', compact('PageCard','countries'));
     }
 
     function createPageCard(Request $request){
@@ -791,6 +842,8 @@ class AdminController extends Controller
             'link' => 'required|string',
             'title' => 'required|string',
             'description' => 'required|string',
+            'language_code' => 'required|exists:countries,code' // Dil kodu doğrulaması
+
         ]);
 
         $PageCard = new PageCard();
@@ -799,6 +852,8 @@ class AdminController extends Controller
         $PageCard->link = $request->link;
         $PageCard->title = $request->title;
         $PageCard->description = $request->description;
+        $PageCard->lang = $request->language_code;
+
 
         if ($file = $request->file('img')){
             $name = $file->getClientOriginalName();
@@ -838,6 +893,9 @@ class AdminController extends Controller
             ->addColumn('description', function ($data){
                 return $data->link;
             })
+            ->addColumn('lang', function ($data){
+                return $data->lang;
+            })
             ->addColumn('detail', function ($data){
                 return '<button class="btn btn-danger" onclick="delete_slider('.$data->id.')">Sil</button>';
             })
@@ -863,29 +921,6 @@ class AdminController extends Controller
     }
 
 
-    function create_menu(Request $request){
-
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'top_menu_id' => 'nullable|exists:menus,id'
-        ]);
-
-        if ($request->top_menu_id){
-            $top_menu = Menu::where('id', $request->top_menu_id)->where('user_id', Auth::id())->first();
-
-            if (!$top_menu){
-                abort(401);
-            }
-        }
-
-        $menu = Menu::create([
-            'top_menu_id' => $request->top_menu_id,
-            'name' => $request->name,
-            'user_id' => Auth::id()
-        ]);
-
-        return response() -> json(['data' => $menu]);
-    }
 
 
     function delete_menu(Request $request){
@@ -1021,7 +1056,9 @@ class AdminController extends Controller
 
     function FootermenuIndex(){
         $menu = FooterMenu::where('user_id', Auth::id())->get();
-        return view('admin.footer.menuCreate',compact('menu'));
+        $countries = Country::all();
+
+        return view('admin.footer.menuCreate',compact('menu','countries'));
     }
 
     function FootermenuDetail($id){
@@ -1066,6 +1103,7 @@ class AdminController extends Controller
         $request -> validate([
             'title' => 'required',
             'description' => 'required'
+
         ]);
 
         $menu = FooterMenu::whereHas('getSubMenu', function ($q) use ($request){
@@ -1346,7 +1384,11 @@ class AdminController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'top_menu_id' => 'nullable|exists:menus,id'
+            'top_menu_id' => 'nullable|exists:menus,id',
+            'language_code' => 'required|exists:countries,code' // Dil kodu doğrulaması
+
+
+
         ]);
         if ($request->top_menu_id){
             $top_menu = FooterMenu::where('id', $request->top_menu_id)->where('user_id', Auth::id())->first();
@@ -1359,6 +1401,7 @@ class AdminController extends Controller
         $menu = FooterMenu::create([
             'top_menu_id' => $request->top_menu_id,
             'name' => $request->name,
+            'lang' => $request->language_code, // Dil kodunu kaydet
             'user_id' => Auth::id()
         ]);
 

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->longText('description');
             $table->timestamps();
 
-            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
-            $table->foreign('submenu_id')->references('id')->on('submenus')->onDelete('cascade');
+            $table->foreign('menu_id')->references('id')->on('foot_menus')->onDelete('cascade');
+            $table->foreign('submenu_id')->references('id')->on('footer_sub_menus')->onDelete('cascade');
         });
     }
 

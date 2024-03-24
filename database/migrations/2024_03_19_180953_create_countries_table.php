@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('footer_sub_menus', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('menu_id');
-            $table->string('name');
+            $table->char('code',4);
             $table->timestamps();
-
-            $table->foreign('menu_id')->references('id')->on('foot_menus')->onDelete('cascade');
         });
     }
 
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('footer_sub_menus');
+        Schema::dropIfExists('countries');
     }
 };

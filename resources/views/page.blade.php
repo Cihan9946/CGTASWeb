@@ -16,7 +16,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('Front/assets/css/style.css')}}">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 
 
@@ -28,21 +30,20 @@
     $menus = \App\Models\Menu::get();
 
 @endphp
-<header >
+<header  >
 
     <nav style="background-color: white;" class="navbar navbar-expand-lg navbar-light" >
         <div class="container-fluid">
-            <a href="{{route('appIndex')}}" class="navbar-brand d-flex mt-1 mx-3 ">
+            <a href="{{route('appIndex')}}" class="navbar-brand d-flex mb-5  mx-3 ">
 
-                <img  class="mb-3" src="{{asset('Front/images/shopcgt1.jpg')}}" width="100" height="90" alt="CoolBrand">
-                <span class="h2 mt-4"  >Contectus</span>
+                <img  class="mb-5" src="{{asset('Front/images/shopcgt1.jpg')}}" width="100" height="90" alt="CoolBrand">
+                <span class="h2 mt-5"  >Contectus</span>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse mt-5 mx-2 menuler" id="navbarCollapse">
-                <div class="navbar-nav mb-5 mx-5 yazi">
-
+                <div class="navbar-nav mt-5 mx-5 yazi">
                     @foreach($menus->where('top_menu_id', null) as $menu)
                         @if($menu->getSubmenus->count() > 0)
                             <div class="dropdown">
@@ -56,19 +57,23 @@
                                 </div>
                             </div>
                         @else
-                            <a href="@if($menu->getPage) {{ route('page', $menu->getPage->id) }} @endif" class="nav-item nav-link mx-2">{{ $menu->name }}</a>
+                            <a href="@if($menu->getPage) {{ route('pages', $menu->getPage->id) }} @endif" class="nav-item nav-link mx-2">{{ $menu->name }}</a>
                         @endif
                     @endforeach
-
-
                 </div>
             </div>
 
+            <div class="panel-body mt-5 mx-5">
+                <div class="form-group">
+                    <input placeholder="Ara" type="text" class="form-controller" id="search" name="search"></input>
+                </div>
+                <table class="table table-bordered table-hover">
 
-            <div class="mx-5 yazi">Ara</div>
-            <div style="margin-left: -40px;"></div>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
 
-            <a class="mx-5" href="#"><img src="{{asset('Front/images/Search.png')}}" alt=""></a>
 
             <ul class="navbar-nav mr-5  ">
 
@@ -97,6 +102,7 @@
 
 </header>
 
+
 @if(isset($page))
 <section class="section  d-flex justify-content-center align-items-center  about-text-back">
     <div class="container">
@@ -119,7 +125,7 @@
     <div class="row justify-content-center ">
         @foreach($PageCard as $card)
             <div  class="col-lg col-sm-12 col-md d-flex justify-content-center mt-5">
-                <div  class="card" style=" width: 40rem; border: 0px">
+                <div  class="card" style=" width: 50rem; border: 0px">
                     <div class="row no-gutters">
                         <div class="col-md-6">
                             <img style="min-height:250px; max-height: 250px" src="{{ asset('PageCard/' . $card->img) }}" class="card-img mt-5" alt="...">
@@ -189,61 +195,25 @@
 <footer class="mt-3">
 
     <section class="section footerback p-5 ">
-        <div class="row mt-5">
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">Yenilikler</h4>
-                <h6 class="mb-4">Microsoft 365</h6>
-                <h6>Windows 11 uygulamaları</h6>
-            </div>
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">Microsoft Store</h4>
-                <h6 class="mb-4">Hesap Profili</h6>
-                <h6 class="mb-4">İndirme Merkezi</h6>
-                <h6 class="mb-4">Microsoft Store Desteği</h6>
-                <h6 class="mb-4">İadeler</h6>
-                <h6 class="mb-4">Sipariş İzleme</h6>
-            </div>
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">Eğitim</h4>
-                <h6 class="mb-4">Microsoft Eğitimi</h6>
-                <h6 class="mb-4">Eğitim için Microsoft Teams</h6>
-                <h6 class="mb-4">Microsoft 365 Eğitim</h6>
-                <h6 class="mb-4">Office Eğitim</h6>
-                <h6 class="mb-4">Eğitimci eğitimi ve gelişimi</h6>
-                <h6 class="mb-4">Öğrenciler için Azure</h6>
-            </div>
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">İşletme</h4>
-                <h6 class="mb-4">Microsoft Cloud</h6>
-                <h6 class="mb-4">Microsoft Güvenlik</h6>
-                <h6 class="mb-4">Azure</h6>
-                <h6 class="mb-4">Dynamics 365</h6>
-                <h6 class="mb-4">Microsoft 365</h6>
-                <h6 class="mb-4">Microsoft Adversiting </h6>
-                <h6 class="mb-4">Microsoft Industry</h6>
-                <h6 class="mb-4">Microsoft Teams</h6>
-            </div>
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">Geliştirici ve BT</h4>
-                <h6 class="mb-4">Geliştirici Merkezi</h6>
-                <h6 class="mb-4">Belgeler</h6>
-                <h6 class="mb-4">Microsoft Learn</h6>
-                <h6 class="mb-4">Microsoft Tech Community</h6>
-                <h6 class="mb-4">Azure Market</h6>
-                <h6 class="mb-4">AppSource</h6>
-                <h6 class="mb-4">Microsoft Power Platform</h6>
-            </div>
-            <div class="col-md-2">
-                <h4 class="mb-5 headtext">Şirket</h4>
-                <h6 class="mb-4">Kariyer Fırsatları</h6>
-                <h6 class="mb-4">Microsoft Hakkında</h6>
-                <h6 class="mb-4">Microsoft’ta Gizlilik</h6>
-                <h6 class="mb-4">Microsoft 365 Eğitim</h6>
-                <h6 class="mb-4">Yatırımcılar</h6>
-                <h6 class="mb-4">Sürdürülebilirlik</h6>
-            </div>
+        <div class="row mt-2">
+            @if ($footerMenus->where('top_menu_id', null)->count() > 0)
+                @foreach ($footerMenus->where('top_menu_id', null) as $footerMenu)
+                    <div  class="col-md-2">
+                        <h4 class="mb-5 headtext">{{ $footerMenu->name }}</h4>
+                        @if ($footerMenu->getSubmenus->count() > 0)
+                            <ul style="padding-left: 0;" class="submenu-list">
+                                @foreach ($footerMenu->getSubmenus as $submenu)
+                                    <li style="list-style-type: none;" ><a style="text-decoration:none ; color: #1c1f23" href="@if($submenu->getPage) {{ route('pagefooter', $submenu->getPage->id) }} @endif">{{ $submenu->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+                @endforeach
+            @endif
         </div>
     </section>
+
+
 
     <section class="section footerback p-5 ">
         <div class="row mt-5">
@@ -275,7 +245,28 @@
 <!-- footer -->
 
 
+<script type="text/javascript">
+    $('#search').on('keyup',function(){
+        $value=$(this).val();
+        $.ajax({
+            type : 'get',
+            url : '{{route('search')}}',
+            data:{'search':$value},
+            success:function(data){
+                $('tbody').html(data);
+            }
+        });
+    })
+</script>
+<script type="text/javascript">
+    $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+</script>
+<script>
+    // Initialization for ES Users
+    import { Input, Ripple, initMDB } from "mdb-ui-kit";
 
+    initMDB({ Input, Ripple });
+</script>
 
 </body>
 </html>

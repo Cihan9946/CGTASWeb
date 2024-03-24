@@ -43,6 +43,15 @@
                                                 <input type="text" name="name" placeholder="Menü İsmi" class="form-control">
                                             </div>
                                         </div>
+                                        {{-- Dil Seçimi için Dropdown --}}
+                                        <div class="form-group">
+                                            <label for="language_code">Dil Seçimi:</label>
+                                            <select class="form-select" id="language_code" name="language_code">
+                                                @foreach($countries as $country)
+                                                    <option value="{{ $country->code }}">{{ $country->code }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
                                                 <i class="bx bx-x d-block d-sm-none"></i>
@@ -121,6 +130,7 @@
                         <th>ID</th>
                         <th>Menü</th>
                         <th>Üst Menü</th>
+                        <th>Dil seçeneği</th>
                         <th>Seçenekler</th>
                     </tr>
                     </thead>
@@ -157,6 +167,7 @@
                 {data: 'id'},
                 {data: 'name'},
                 {data: 'top_menu'},
+                {data: 'lang'},
                 {data: 'detail'},
             ],
             "language": {

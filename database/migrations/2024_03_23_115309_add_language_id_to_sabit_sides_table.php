@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('footer_sub_menus', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('menu_id');
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('sabit_sides', function (Blueprint $table) {
+            $table->char('lang')->nullable();
 
-            $table->foreign('menu_id')->references('id')->on('foot_menus')->onDelete('cascade');
         });
     }
 
@@ -26,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('footer_sub_menus');
+        Schema::table('sabit_sides', function (Blueprint $table) {
+            $table->dropColumn('lang');
+
+        });
     }
 };

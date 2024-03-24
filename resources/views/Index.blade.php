@@ -6,7 +6,6 @@
     <title>CONTECTUS</title>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -17,26 +16,25 @@
     <link rel="stylesheet" href="{{asset('Front/assets/css/style.css')}}">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
 </head>
 
 <body>
-@php
-    $menus = \App\Models\Menu::get();
-@endphp
-<header >
+
+<header  >
 
     <nav style="background-color: white;" class="navbar navbar-expand-lg navbar-light" >
         <div class="container-fluid">
-            <a href="{{route('appIndex')}}" class="navbar-brand d-flex mt-1 mx-3 ">
+            <a href="{{route('appIndex')}}" class="navbar-brand d-flex mb-5  mx-3 ">
 
-                <img  class="mb-3" src="{{asset('Front/images/shopcgt1.jpg')}}" width="100" height="90" alt="CoolBrand">
-                <span class="h2 mt-4"  >Contectus</span>
+                <img  class="mb-5" src="{{asset('Front/images/shopcgt1.jpg')}}" width="100" height="90" alt="CoolBrand">
+                <span class="h2 mt-5"  >Contectus</span>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse mt-5 mx-2 menuler" id="navbarCollapse">
-                <div class="navbar-nav mb-5 mx-5 yazi">
+                <div class="navbar-nav mt-5 mx-5 yazi">
                     @foreach($menus->where('top_menu_id', null) as $menu)
                         @if($menu->getSubmenus->count() > 0)
                             <div class="dropdown">
@@ -56,35 +54,17 @@
                 </div>
             </div>
 
+            <div class="panel-body mt-5 mx-5">
+                <div class="form-group">
+                    <input placeholder="Ara" type="text" class="form-controller" id="search" name="search"></input>
+                </div>
+                <table class="table table-bordered table-hover">
 
-
-        </div>
-        <div class="panel-body mt-5 mx-5">
-            <div class="form-group">
-                <input placeholder="Ara" type="text" class="form-controller" id="search" name="search"></input>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
-            <table class="table table-bordered table-hover">
 
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="panel-body input-group">
-            <div class="form-group" >
-                <input placeholder="Ara" type="text" class="form-controller" id="search" name="search"</input>
-
-
-            </div>
-            <table class="table table-bordered table-hover">
-
-                <tbody>
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-primary" data-mdb-ripple-init>
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
 
             <ul class="navbar-nav mr-5  ">
 
@@ -97,8 +77,8 @@
                         <span class="flag-icon flag-icon-tr mr-1"></span> <!-- Amerika Bayrağı -->
                     </a>
                     <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                        <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-tr  mr-1 h3"></span> Turkish</a>
-                        <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-us mr-1 h3"></span> English</a>
+                        <a class="dropdown-item" href="{{route('TR')}}"><span class="flag-icon flag-icon-tr  mr-1 h3"></span> Turkish</a>
+                        <a class="dropdown-item" href="{{route('EN')}}"><span class="flag-icon flag-icon-us mr-1 h3"></span> English</a>
                         <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-pl mr-1 h3"></span> Polish</a>
                         <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-cn mr-1 h3"></span> Chinese</a>
                         <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-de mr-1 h3"></span> German</a>
@@ -112,7 +92,6 @@
     </nav>
 
 </header>
-
 
 <!-- slider -->
 

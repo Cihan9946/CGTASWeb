@@ -53,6 +53,15 @@
                                             <div class="form-group">
                                                 <textarea class="form-control" name="description" id="description"></textarea>
                                             </div>
+                                            {{-- Dil Seçimi için Dropdown --}}
+                                            <div class="form-group">
+                                                <label for="language_code">Dil Seçimi:</label>
+                                                <select class="form-select" id="language_code" name="language_code">
+                                                    @foreach($countries as $country)
+                                                        <option value="{{ $country->code }}">{{ $country->code }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
@@ -85,9 +94,10 @@
                     <tr>
                         <th>ID</th>
                         <th>Fotoğraf İsmi</th>
+                        <th>Dil Seçeneği</th>
                         <th>Fotoğraf</th>
-                        <th>PageCard Title</th>
-                        <th>PageCard Description</th>
+                        <th>Slider Title</th>
+                        <th>Slider Description</th>
                         <th>Link İsmi</th>
                         <th>Sayfa Başlığı</th>
                         <th>Sayfa İçeriği</th>
@@ -132,7 +142,7 @@
             $('#inlineForm').on('shown.bs.modal', function () {
                 // Adjust the modal height based on CKEditor content height
                 var editorHeight = CKEDITOR.instances['description'].container.$.offsetHeight;
-                var newModalHeight = 600 + editorHeight;
+                var newModalHeight = 800 + editorHeight;
                 $('#inlineForm .modal-dialog').css('height', newModalHeight + 'px');
             });
         });
@@ -149,6 +159,7 @@
             columns: [
                 {data: 'id'},
                 {data: 'img'},
+                {data: 'lang'},
                 {data: 'imgDetail'},
                 {data: 'maintitle'},
                 {data: 'maindescription'},
