@@ -15,77 +15,55 @@ use App\Models\SabitIcon;
 use App\Models\SabitSide;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
     //TR
-    public function TR(Request $request)
-    {
-        $menus = Menu::where('top_menu_id', $request->top_menu_id)->where('lang', 'TR')->get();
-        $images = Slider::where('lang', 'TR')->get();
-        $card1 = Card1::where('lang', 'TR')->get();
-        $card2 = Card2::where('lang', 'TR')->get();
-        $SabitSide =SabitSide::where('lang', 'TR')->get();
-        $SabitIcon=SabitIcon::where('lang', 'TR')->get();
-        $PageCard=PageCard::where('lang', 'TR')->get();
-        $footerMenus=FooterMenu::where('top_menu_id', $request->top_menu_id)->where('lang', 'TR')->get();
-        $keyword = $request->input('keyword');
-        if ($keyword) {
-            $search = Menu::where('name', 'like', '%' . $keyword . '%')
-                ->where('lang', 'TR')
-                ->get();
-        } else {
-            $search = [];
-        }
-
-        return view('Index', compact('menus', 'footerMenus', 'images', 'card1', 'card2', 'SabitSide', 'SabitIcon', 'PageCard', 'search'));
-
-    }
 
 //EN
-    public function EN(Request $request)
-    {
-        $menus = Menu::where('top_menu_id', $request->top_menu_id)->where('lang', 'EN')->get();
-        $images = Slider::where('lang', 'EN')->get();
-        $card1 = Card1::where('lang', 'EN')->get();
-        $card2 = Card2::where('lang', 'EN')->get();
-        $SabitSide =SabitSide::where('lang', 'EN')->get();
-        $SabitIcon=SabitIcon::where('lang', 'EN')->get();
-        $PageCard=PageCard::where('lang', 'EN')->get();
-        $footerMenus=FooterMenu::where('top_menu_id', $request->top_menu_id)->where('lang', 'EN')->get();
-        $keyword = $request->input('keyword');
-        if ($keyword) {
-            $search = Menu::where('name', 'like', '%' . $keyword . '%')
-                ->where('lang', 'EN')
-                ->get();
-        } else {
-            $search = [];
-        }
-
-        return view('Index', compact('menus', 'footerMenus', 'images', 'card1', 'card2', 'SabitSide', 'SabitIcon', 'PageCard', 'search'));
-
-    }
     public function appIndex(Request $request)
     {
-        $images = Slider::get();
-        $card1 = Card1::get();
-        $card2 = Card2::get();
-        $SabitSide =SabitSide::get();
-        $SabitIcon=SabitIcon::get();
-        $menus = Menu::where('top_menu_id', $request->top_menu_id)->get();
-        $PageCard=PageCard::get();
-        $footerMenus=FooterMenu::where('top_menu_id', $request->top_menu_id)->get();
-        $keyword = $request->input('keyword');
-        if ($keyword) {
-            $search = Menu::where('name', 'like', '%' . $keyword . '%')->get();
-        } else {
-            $search = [];
+        $locale = App::currentLocale();
+
+        if (App::isLocale('tr')) {
+            $menus = Menu::where('top_menu_id', $request->top_menu_id)->where('lang', 'TR')->get();
+            $images = Slider::where('lang', 'TR')->get();
+            $card1 = Card1::where('lang', 'TR')->get();
+            $card2 = Card2::where('lang', 'TR')->get();
+            $SabitSide =SabitSide::where('lang', 'TR')->get();
+            $SabitIcon=SabitIcon::where('lang', 'TR')->get();
+            $PageCard=PageCard::where('lang', 'TR')->get();
+            $footerMenus=FooterMenu::where('top_menu_id', $request->top_menu_id)->where('lang', 'TR')->get();
+            $keyword = $request->input('keyword');
+            if ($keyword) {
+                $search = Menu::where('name', 'like', '%' . $keyword . '%')
+                    ->where('lang', 'TR')
+                    ->get();
+            } else {
+                $search = [];
+            }
+        }else if(App::isLocale("en")){
+            $menus = Menu::where('top_menu_id', $request->top_menu_id)->where('lang', 'EN')->get();
+            $images = Slider::where('lang', 'EN')->get();
+            $card1 = Card1::where('lang', 'EN')->get();
+            $card2 = Card2::where('lang', 'EN')->get();
+            $SabitSide =SabitSide::where('lang', 'EN')->get();
+            $SabitIcon=SabitIcon::where('lang', 'EN')->get();
+            $PageCard=PageCard::where('lang', 'EN')->get();
+            $footerMenus=FooterMenu::where('top_menu_id', $request->top_menu_id)->where('lang', 'EN')->get();
+            $keyword = $request->input('keyword');
+            if ($keyword) {
+                $search = Menu::where('name', 'like', '%' . $keyword . '%')
+                    ->where('lang', 'EN')
+                    ->get();
+            } else {
+                $search = [];
+            }
         }
-
         return view('Index', compact('menus', 'footerMenus', 'images', 'card1', 'card2', 'SabitSide', 'SabitIcon', 'PageCard', 'search'));
-
 
     }
 

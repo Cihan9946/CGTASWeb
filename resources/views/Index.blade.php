@@ -77,8 +77,7 @@
                         <span class="flag-icon flag-icon-tr mr-1"></span> <!-- Amerika Bayrağı -->
                     </a>
                     <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                        <a class="dropdown-item" href="{{route('TR')}}"><span class="flag-icon flag-icon-tr  mr-1 h3"></span> Turkish</a>
-                        <a class="dropdown-item" href="{{route('EN')}}"><span class="flag-icon flag-icon-us mr-1 h3"></span> English</a>
+
                         <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-pl mr-1 h3"></span> Polish</a>
                         <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-cn mr-1 h3"></span> Chinese</a>
                         <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-de mr-1 h3"></span> German</a>
@@ -142,7 +141,7 @@
             @foreach ($SabitIcon as $item)
                 <div class="col-md-2 col-sm-12 mb-4 d-flex flex-column align-items-center justify-content-center text-center">
                     <a href="{{ route('getPageBySabitIcon', ['maintitle' => $item->maintitle]) }}">
-                        <img  class="d-block img-xbox mx-5" src="{{ asset('SabitIcon/'. $item->img) }}" alt="">
+                        <img  class="d-block img-xbox mx-5 img-fluid" src="{{ asset('SabitIcon/'. $item->img) }}" alt="">
                     </a>
                     <a href="{{ route('getPageBySabitIcon', ['maintitle' => $item->maintitle]) }}" class="text-dark d-block mt-3">{{ $item->maintitle }}</a>
                 </div>

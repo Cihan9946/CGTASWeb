@@ -98,6 +98,12 @@ return [
 
     'fallback_locale' => 'en',
 
+
+    'available_locales' => [
+        'English' => 'en',
+        'Turkish' => 'tr'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Faker Locale

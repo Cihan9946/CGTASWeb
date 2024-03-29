@@ -34,7 +34,8 @@ body {
     font-size: smaller;
 }
 .img-xbox{
-    width: 90px;
+    width: 100px; /* İstediğiniz genişliği ayarlayın */
+    height: 100px; /* İstediğiniz yüksekliği ayarlayın */
 }
 .cardlink{
     text-decoration: none;
