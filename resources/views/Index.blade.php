@@ -53,7 +53,9 @@
                     @endforeach
                 </div>
             </div>
-
+            
+<!--
+            Search bar
             <div class="panel-body mt-5 mx-5">
                 <div class="form-group">
                     <input placeholder="Ara" type="text" class="form-controller" id="search" name="search"></input>
@@ -64,7 +66,7 @@
                     </tbody>
                 </table>
             </div>
-
+-->
 
             <ul class="navbar-nav mr-5  ">
 
